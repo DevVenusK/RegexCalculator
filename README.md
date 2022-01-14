@@ -32,3 +32,26 @@ struct RegexCalculator {
     }
 }
 ```
+
+```swift
+extension String {
+    func regexCalculrator(pattern: String) -> Bool {
+        do {
+            let regex = try NSRegularExpression(pattern: pattern,
+                                                options: [])
+            let result = regex
+                .matches(in: self,
+                         options: [],
+                         range: NSRange(location: 0,
+                                        length: self.count))
+                .compactMap { Range($0.range, in: self) }
+                .compactMap { String(self[$0]) }
+            
+            return result.isEmpty ? false : true
+        } catch {
+            print("\(self) \(error)")
+            return false
+        }
+    }
+}
+```
