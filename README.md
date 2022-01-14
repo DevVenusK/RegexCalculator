@@ -1,3 +1,5 @@
+```swift
+
 protocol RegexCalculatorProtocol {
     init(pattern: String)
     func calculate(_ string: String) -> Bool
@@ -29,3 +31,4 @@ struct RegexCalculator {
         }
     }
 }
+```
